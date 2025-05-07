@@ -1,5 +1,6 @@
 package com.app.logistics.services;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -36,10 +37,18 @@ public class ShipmentServiceImpl implements ShipmentService {
 
     private String saveFile(MultipartFile file) throws IOException {
         if (file == null || file.isEmpty()) return null;
+
+        // Create directory if not exists
+        File directory = new File(uploadDir);
+        if (!directory.exists()) {
+            directory.mkdirs(); // creates all nonexistent parent directories
+        }
+
         String filename = UUID.randomUUID() + "_" + file.getOriginalFilename();
         Path path = Paths.get(uploadDir, filename);
         Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
-        return path.toString();
+
+        return path.toAbsolutePath().toString(); // optional: use relative path if serving later
     }
 
     @Override
