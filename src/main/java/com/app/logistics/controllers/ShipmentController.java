@@ -32,7 +32,7 @@ public class ShipmentController {
     @Autowired
     private ShipmentService shipmentService;
 
-    @CrossOrigin(origins = "https://stupendous-2db6ae.netlify.app")
+    @CrossOrigin(origins = "https://stupendous-cheesecake-2db6ae.netlify.app")
     @PostMapping(value ="/add-shipment",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<Shipment> addShipment(
             @RequestPart("shipment") ShipmentDTO dto,
@@ -45,7 +45,7 @@ public class ShipmentController {
         return ResponseEntity.status(HttpStatus.CREATED).body(shipment);
     }
 
-    @CrossOrigin(origins = "https://stupendous-2db6ae.netlify.app")
+    @CrossOrigin(origins = "https://stupendous-cheesecake-2db6ae.netlify.app")
     @PutMapping(value = "update-shipment/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<Shipment> updateShipment(
             @PathVariable Long id,
