@@ -10,6 +10,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,6 +32,7 @@ public class ShipmentController {
     @Autowired
     private ShipmentService shipmentService;
 
+    @CrossOrigin(origins = "https://stupendous-2db6ae.netlify.app")
     @PostMapping(value ="/add-shipment",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<Shipment> addShipment(
             @RequestPart("shipment") ShipmentDTO dto,
@@ -43,6 +45,7 @@ public class ShipmentController {
         return ResponseEntity.status(HttpStatus.CREATED).body(shipment);
     }
 
+    @CrossOrigin(origins = "https://stupendous-2db6ae.netlify.app")
     @PutMapping(value = "update-shipment/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<Shipment> updateShipment(
             @PathVariable Long id,

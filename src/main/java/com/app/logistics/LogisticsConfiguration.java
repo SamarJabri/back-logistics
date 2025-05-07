@@ -14,7 +14,7 @@ public class LogisticsConfiguration {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/**").allowedOrigins("https://stupendous-cheesecake-2db6ae.netlify.app")
-						.allowedMethods("GET", "POST", "PUT", "DELETE").allowCredentials(true);
+						.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS").allowCredentials(true);
 			}
 		};
 	}
